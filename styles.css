@@ -282,8 +282,98 @@ a {
 .toast.show { transform: translateY(0); }
 
 @media (max-width: 900px) {
-    .hero-section, .projects-grid, .info-grid { grid-template-columns: 1fr; }
-    .hero-content { text-align: center; }
-    .hero-actions { justify-content: center; }
-    .info-chips { grid-template-columns: 1fr; }
+    .navbar {
+        position: relative;
+        padding: 16px 0;
+    }
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        padding: 8px;
+    }
+    .mobile-menu-btn span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background-color: var(--text-main);
+        transition: all 0.3s ease;
+    }
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 20px;
+        box-shadow: var(--shadow);
+        z-index: 100;
+        gap: 16px;
+        align-items: center;
+    }
+    .nav-links.show {
+        display: flex;
+    }
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
+    .nav-links a.active {
+        border-bottom: none;
+        color: var(--brand);
+        font-weight: 800;
+    }
+    
+    .nav-demo-btn {
+        display: none;
+    }
+
+    .hero-section {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-top: 16px;
+    }
+    .profile-card {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero-actions {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-actions .btn {
+        width: 100%;
+    }
+    .info-chips {
+        grid-template-columns: 1fr;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }

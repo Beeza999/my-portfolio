@@ -25,9 +25,15 @@ const projects = {
     },
     dorm: {
         title: 'Online Dormitory Platform',
-        status: 'development',
-        link: '#',
-        btnText: 'Check back later'
+        status: 'live',
+        credentials: [
+            { label: 'Admin Email (ອີເມລ)', value: 'admin@example.com' },
+            { label: 'Admin Password (ລະຫັດຜ່ານ)', value: '123456' },
+            { label: 'User Email (ອີເມລ)', value: 'user@example.com' },
+            { label: 'User Password (ລະຫัดຜ່ານ)', value: '123456' }
+        ],
+        link: 'https://dormitory-management-one.vercel.app/',
+        btnText: 'Go to Dormitory Platform Demo'
     }
 };
 
@@ -322,6 +328,34 @@ window.addEventListener('DOMContentLoaded', () => {
     
     setTimeout(setSkillWidths, 500);
 });
+
+// Mobile Menu Toggling
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navLinks = document.getElementById('navLinks');
+
+if (mobileMenuBtn && navLinks) {
+    mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileMenuBtn.classList.toggle('active');
+        navLinks.classList.toggle('show');
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('show');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('show');
+        }
+    });
+}
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
